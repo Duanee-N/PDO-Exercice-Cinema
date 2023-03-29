@@ -147,12 +147,16 @@ li>a:hover{
     font-weight: bold;
 }
 
-#detailActeurs, #detailRealisateurs, #detailRoles{
+#detailActeurs, #detailRealisateurs, #detailRoles, #detailGenres{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
     gap: 20px;
+}
+
+#detailGenres{
+    align-items: center;
 }
 
 #detailRoles>p>a:hover{

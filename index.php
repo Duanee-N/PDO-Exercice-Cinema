@@ -25,7 +25,20 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
             break;
             
         case "addFilm" :
-            $ctrlCinema->addFilms();
+            $ctrlCinema->addFilm();
+            break;
+
+        //GENRE
+        case "listGenres" :
+            $ctrlCinema->listGenres();
+            break;
+        
+        case "detailGenres" :
+            $ctrlCinema->detailGenres($id);
+            break;
+            
+        case "addGenre" :
+            $ctrlCinema->addGenre();
             break;
 
 

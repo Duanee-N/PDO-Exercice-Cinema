@@ -39,7 +39,7 @@ class CinemaController{
         require "view/detailFilms.php"; 
     }
 
-    public function addFilms(){ 
+    public function addFilm(){ 
         $pdo=Connect::seConnecter();
         if(isset($_POST["submitFilm"])) { //vérification de l'existence de la clé "submitFilm" - = attribut name="submitFilm" - dans le tableau $_POST
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -97,6 +97,51 @@ class CinemaController{
 
         require "view/formFilms.php"; 
     }
+
+    //GENRES
+    public function listGenres(){
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->query("SELECT g.id_genre, g.libelle_genre , COUNT(p.id_genre) AS nbFilmGenre
+        FROM posseder_genre p
+        INNER JOIN genre g ON g.id_genre = p.id_genre
+        GROUP BY g.id_genre"); //Exécution de la requête choisie
+
+        require "view/listGenres.php";
+    }
+
+    public function detailGenres($id){ 
+        $pdo=Connect::seConnecter(); 
+        $requete=$pdo->prepare("SELECT f.id_film, titre_film, annee_sortie_fr, g.id_genre, libelle_genre
+        FROM posseder_genre p
+        INNER JOIN genre g ON g.id_genre = p.id_genre
+        INNER JOIN film f ON f.id_film = p.id_film
+        WHERE g.id_genre = :id"); 
+        $requete->execute(["id"=>$id]);
+        require "view/detailGenres.php";
+    }
+
+    public function addGenre(){ 
+        $pdo=Connect::seConnecter();
+        if(isset($_POST["submitGenre"])){ 
+            $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            echo "<p>Le genre a bien été ajouté</p>";
+        }
+
+        $requete=$pdo->prepare("INSERT INTO 'genre' ('libelle_genre') 
+        VALUES (:libelle_genre)");
+
+        if($genre){
+            $requete->execute(array(
+                "libelle_genre" => $genre
+            ));
+        } else{
+            echo "<p>Erreur... Veuillez réessayer.</p>";
+        }
+        header("Location:index.php?action=addGenre");
+        require "view/formGenres.php"; 
+    }
+
 
     //ACTEURS
     public function listActeurs(){

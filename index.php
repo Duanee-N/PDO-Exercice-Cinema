@@ -24,6 +24,10 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
             $ctrlCinema->detailFilms($id);
             break;
             
+        case "formFilms" :
+            $ctrlCinema->addFilm();
+            break;
+
         case "addFilm" :
             $ctrlCinema->addFilm();
             break;
@@ -56,6 +60,14 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
             $ctrlCinema->detailActeurs($id);
             break;    
 
+        case "formActeurs" :
+            $ctrlCinema->addActeur();
+            break;
+
+        case "addActeur" :
+            $ctrlCinema->addActeur();
+            break;
+
 
         //ROLES  
         case "listRoles" :
@@ -65,6 +77,10 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "detailRoles" :
             $ctrlCinema->detailRoles($id);
             break;       
+
+        case "formRoles" :
+            $ctrlCinema->addRole();
+            break;
         
         case "addRole" :
             $ctrlCinema->addRole();
@@ -79,6 +95,14 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "detailRealisateurs" :
             $ctrlCinema->detailRealisateurs($id);
             break;   
+
+        case "formRealisateurs" :
+            $ctrlCinema->addRealisateur();
+            break;
+
+        case "addRealisateur" :
+            $ctrlCinema->addRealisateur();
+            break;
 
         }
     } else{

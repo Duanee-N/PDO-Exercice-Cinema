@@ -2,10 +2,10 @@
     ob_start();
 ?>
 
-<div>
+<div class="recap">
     <p>Il y a <?= $requete->rowCount() ?> rôles</p>
-    <button><a href="index.php?action=addRole">Ajouter un rôle</a></button>
-<div>
+    <button><a href="index.php?action=formRoles">Ajouter un rôle</a></button>
+</div>
 
 <table border=1 style='border-collapse:collapse;'>
     <thead>

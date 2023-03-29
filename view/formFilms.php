@@ -2,7 +2,7 @@
     session_start();
     ob_start();
     ?>
-<form action="index.php?action=addFilm" method="post" id="form" enctype="multipart/form-data">
+<form action="index.php?action=formFilms" method="post" id="form" enctype="multipart/form-data">
     <div class="formulaire">
         <div class="box">
             <p>

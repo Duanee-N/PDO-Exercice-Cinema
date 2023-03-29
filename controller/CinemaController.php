@@ -47,48 +47,53 @@ class CinemaController{
             $duree = filter_input(INPUT_POST, "duree", FILTER_VALIDATE_INT);
             $synopsis = (empty($_POST["synopsis"])) ? NULL : filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = (empty($_POST["note"])) ? NULL : filter_input(INPUT_POST, "note", FILTER_VALIDATE_INT); 
-            $realisateur=filter_input(INPUT_POST, "realisateur", FILTER_VALIDATE_INT); // A FILTRER
-            //$id=$_POST["id"];
-            // $pdo->lastinsertid();
+            $affiche = (empty($_POST["affiche"])) ? NULL : affiche(); 
+            $realisateur=filter_input(INPUT_POST, "realisateur", FILTER_VALIDATE_INT); 
 
-            if(isset($_FILES["affiche"])){
-                $tmpName=$_FILES["affiche"]["tmp_name"];
-                $nameimg=$_FILES["affiche"]["name"];
-                $size=$_FILES["affiche"]["size"];
-                $error=$_FILES["affiche"]["error"];
-                $type=$_FILES["affiche"]["type"];
-    
-                $tabExtension=explode(".", $nameimg); //ici, explode découpe une chaîne de caractères à chaque point : permet de vérifier si c'est bien une image qui est upload
-                $extension=strtolower(end($tabExtension)); //end va récupérer le dernier élément du tableau
-                $validExtension=["jpg", "jpeg", "gif", "png", "jfif"];
-    
-                if(in_array($extension, $validExtension)&&$error==0){ //si l'extension du fichier fait partie du tableau $validExtension, alors...
-                        $uniqueName=uniqid("", true); //définir un nom unique pour éviter l'écrasement d'une autre image en cas de nom identique
-                        $fileName=$uniqueName.".".$extension;
-                        
-                        move_uploaded_file($tmpName, "public/img/".$fileName); //déplacer l'image de $tmpName vers le dossier img
+            function affiche(){
+                if(isset($_FILES["affiche"])){
+                    $tmpName=$_FILES["affiche"]["tmp_name"];
+                    $nameimg=$_FILES["affiche"]["name"];
+                    $size=$_FILES["affiche"]["size"];
+                    $error=$_FILES["affiche"]["error"];
+                    $type=$_FILES["affiche"]["type"];
+        
+                    $tabExtension=explode(".", $nameimg); //ici, explode découpe une chaîne de caractères à chaque point : permet de vérifier si c'est bien une image qui est upload
+                    $extension=strtolower(end($tabExtension)); //end va récupérer le dernier élément du tableau
+                    $validExtension=["jpg", "jpeg", "gif", "png", "jfif"];
+        
+                    if(in_array($extension, $validExtension)&&$error==0){ //si l'extension du fichier fait partie du tableau $validExtension, alors...
+                            $uniqueName=uniqid("", true); //définir un nom unique pour éviter l'écrasement d'une autre image en cas de nom identique
+                            $affiche=$uniqueName.".".$extension;
+                            
+                            move_uploaded_file($tmpName, "public/img/".$affiche); //déplacer l'image de $tmpName vers le dossier img
+                    }else{
+                            echo "Erreur fichier ou extension... Veuillez réessayer.";
+                    }
                 }else{
-                        echo "Erreur fichier ou extension... Veuillez réessayer.";
+    
                 }
             }
 
-                $requete=$pdo->prepare("INSERT INTO 'film' ('titre_film', 'annee_sortie_fr', 'duree', 'synopsis', 'note', 'affiche', 'id_realisateur') 
+                $requete=$pdo->prepare("INSERT INTO film (titre_film, annee_sortie_fr, duree, synopsis, note, affiche, id_realisateur) 
                 VALUES (:titre_film, :annee_sortie_fr, :duree, :synopsis, :note, :affiche, :id_realisateur)"); //$_POST['titre_film'] //$titre_film
-                if($titre && $anneeSortie && $duree && $synopsis && $note && $fileName && $realisateur){ 
+                if($titre && $anneeSortie && $duree && $realisateur){ 
                     $requete->execute(array(
                         "titre_film" => $titre,
                         "annee_sortie_fr" => $anneeSortie,
                         "duree" => $duree,
                         "synopsis" => $synopsis,
                         "note" => $note,
-                        "affiche" => $fileName,
+                        "affiche" => $affiche,
                         "id_realisateur" => $realisateur
                     ));
+                    echo "<p>Le film a bien été ajouté</p>";
+                } else{
+                    echo "<p>Erreur... Veuillez réessayer.</p>";
                 }
-            echo "<p>Le film a bien été ajouté</p>";
 
-            header("Location:index.php?action=addFilm");
-            die;
+            // header("Location:index.php?action=addFilm");
+            // die;
         }
 
         $requeteReal=$pdo->query("SELECT r.id_realisateur as id, prenom, nom
@@ -107,7 +112,8 @@ class CinemaController{
         $requete=$pdo->query("SELECT g.id_genre, g.libelle_genre , COUNT(p.id_genre) AS nbFilmGenre
         FROM posseder_genre p
         INNER JOIN genre g ON g.id_genre = p.id_genre
-        GROUP BY g.id_genre"); //Exécution de la requête choisie
+        GROUP BY g.id_genre
+        ORDER BY nbFilmGenre DESC"); //Exécution de la requête choisie
 
         require "view/listGenres.php";
     }
@@ -128,21 +134,17 @@ class CinemaController{
         if(isset($_POST["submitGenre"])){ 
             $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
-            $requete=$pdo->prepare("INSERT INTO 'genre' ('libelle_genre') 
-            VALUES (:libelle_genre)");
+            $requete=$pdo->prepare("INSERT INTO genre (libelle_genre) 
+            VALUE (:libelle_genre)");
     
             if($genre){
-                $requete->execute(array(
+                $requete->execute([
                     "libelle_genre" => $genre
-                ));
+                ]);
             } else{
                 echo "<p>Erreur... Veuillez réessayer.</p>";
             }
-            
             echo "<p>Le genre a bien été ajouté</p>";
-
-            header("Location:index.php?action=formGenre");
-            die;
         }
         require "view/formGenres.php"; 
     }
@@ -172,6 +174,41 @@ class CinemaController{
         $requete->execute(["id"=>$id]);
 
         require "view/detailActeurs.php"; 
+    }
+
+    public function addActeur(){ 
+        $pdo=Connect::seConnecter();
+        if(isset($_POST["submitActeur"])){ 
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nom_maj=mb_strtoupper($nom);
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = $_POST["dateNaissance"];
+
+            $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance) 
+            VALUES (:nom, :prenom, :sexe, :date_naissance)");
+    
+            if($nom && $prenom && $sexe && $dateNaissance){
+                $requete->execute([
+                    "nom" => $nom_maj,
+                    "prenom" => $prenom,
+                    "sexe" => $sexe,
+                    "date_naissance" => $dateNaissance
+                ]);
+                
+                $id=$pdo->lastInsertId(); //permet de récupérer l'id de la dernière ligne insérée
+
+                $requete2=$pdo->prepare("INSERT INTO acteur (id_personne)
+                VALUE (:id_personne)");
+                $requete2->execute([
+                    "id_personne" => $id
+                ]);
+                echo "<p>L'acteur/actrice a bien été ajouté(e)</p>";
+            } else{
+                echo "<p>Erreur... Veuillez réessayer.</p>";
+            }
+        }
+        require "view/formActeurs.php"; 
     }
 
 
@@ -206,25 +243,45 @@ class CinemaController{
     public function addRole(){ 
         $pdo=Connect::seConnecter();
         if(isset($_POST["submitRole"])){ 
+            $film = filter_input(INPUT_POST, "film", FILTER_VALIDATE_INT);
             $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $acteur = filter_input(INPUT_POST, "acteur", FILTER_VALIDATE_INT);
 
-            $requete=$pdo->prepare("INSERT INTO 'role' ('nom_role') 
-            VALUES (:nom_role)");
+            $requete=$pdo->prepare("INSERT INTO role (nom_role) 
+            VALUE (:nom_role)");
     
-            if($genre){
-                $requete->execute(array(
+            if($role){
+                $requete->execute([
                     "nom_role" => $role
-                ));
+                ]);
+
+                $id=$pdo->lastInsertId(); //permet de récupérer l'id de la dernière ligne insérée
+
+                $requete2=$pdo->prepare("INSERT INTO casting (id_film, id_acteur, id_role)
+                VALUES (:id_film, :id_acteur, :id_role)");
+                $requete2->execute([
+                    "id_film" => $film, 
+                    "id_acteur" => $acteur,
+                    "id_role" => $id
+                ]);
+
+                echo "<p>Le rôle a bien été ajouté</p>";
             } else{
                 echo "<p>Erreur... Veuillez réessayer.</p>";
             }
-            require "view/formGenres.php"; 
-            
-            echo "<p>Le rôle a bien été ajouté</p>";
-
-            header("Location:index.php?action=addRole");
-            die();
         }
+        $requeteFilm=$pdo->query("SELECT f.id_film, titre_film
+        FROM film f
+        GROUP BY f.id_film
+        ORDER BY titre_film");
+
+        $requeteActeur=$pdo->query("SELECT a.id_acteur, prenom, nom
+        FROM acteur a
+        INNER JOIN personne p ON p.id_personne = a.id_personne
+        GROUP BY a.id_acteur
+        ORDER BY nom");
+
+        require "view/formRoles.php"; 
     }
 
 
@@ -250,6 +307,41 @@ class CinemaController{
         $requete->execute(["id"=>$id]);
 
         require "view/detailRealisateurs.php"; 
+    }
+
+    public function addRealisateur(){ 
+        $pdo=Connect::seConnecter();
+        if(isset($_POST["submitRealisateur"])){ 
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nom_maj=mb_strtoupper($nom);
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = $_POST["dateNaissance"];
+
+            $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance) 
+            VALUES (:nom, :prenom, :sexe, :date_naissance)");
+    
+            if($nom && $prenom && $sexe && $dateNaissance){
+                $requete->execute([
+                    "nom" => $nom_maj,
+                    "prenom" => $prenom,
+                    "sexe" => $sexe,
+                    "date_naissance" => $dateNaissance
+                ]);
+                
+                $id=$pdo->lastInsertId(); //permet de récupérer l'id de la dernière ligne insérée
+
+                $requete2=$pdo->prepare("INSERT INTO realisateur (id_personne)
+                VALUE (:id_personne)");
+                $requete2->execute([
+                    "id_personne" => $id
+                ]);
+                echo "<p>Le réalisateur/la réalisatrice a bien été ajouté(e)</p>";
+            } else{
+                echo "<p>Erreur... Veuillez réessayer.</p>";
+            }
+        }
+        require "view/formRealisateurs.php"; 
     }
 }
 

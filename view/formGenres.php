@@ -2,7 +2,7 @@
     session_start();
     ob_start();
 ?>
-<form action="index.php?action=addGenre" method="post" class="form" enctype="multipart/form-data">
+<form action="index.php?action=formGenres" method="post" class="form" enctype="multipart/form-data">
     <div class="formulaire">
         <div class="box">
             <p>

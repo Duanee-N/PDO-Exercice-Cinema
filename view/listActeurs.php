@@ -3,7 +3,10 @@
     $list=$requete->fetchAll();
 ?>
 
-<p>Il y a <?= $requete->rowCount() ?> acteurs</p>
+<div class="recap">
+    <p>Il y a <?= $requete->rowCount() ?> acteurs</p>
+    <button><a href="index.php?action=formActeurs">Ajouter un acteur/une actrice</a></button>
+</div>
 
     <table border=1 style='border-collapse:collapse;'>
         <thead>
@@ -25,8 +28,8 @@
     </table>
 
 <?php 
-    $titre="Liste des acteurs";
-    $titre_secondaire="Liste des acteurs";
+    $titre="Liste des acteurs/actrices";
+    $titre_secondaire="Liste des acteurs/actrices";
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

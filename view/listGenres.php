@@ -5,7 +5,7 @@
 
 <div class="recap">
     <p>Il y a <?= $requete->rowCount() ?> genres</p>
-    <button><a href="index.php?action=addGenre">Ajouter un genre</a></button>
+    <button><a href="index.php?action=formGenres">Ajouter un genre</a></button>
 </div>
 
 <table border=1 style='border-collapse:collapse;'>

@@ -86,7 +86,9 @@ class CinemaController{
                     ));
                 }
             echo "<p>Le film a bien été ajouté</p>";
+
             header("Location:index.php?action=addFilm");
+            die;
         }
 
         $requeteReal=$pdo->query("SELECT r.id_realisateur as id, prenom, nom
@@ -97,6 +99,7 @@ class CinemaController{
 
         require "view/formFilms.php"; 
     }
+
 
     //GENRES
     public function listGenres(){
@@ -124,21 +127,23 @@ class CinemaController{
         $pdo=Connect::seConnecter();
         if(isset($_POST["submitGenre"])){ 
             $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
+            
+            $requete=$pdo->prepare("INSERT INTO 'genre' ('libelle_genre') 
+            VALUES (:libelle_genre)");
+    
+            if($genre){
+                $requete->execute(array(
+                    "libelle_genre" => $genre
+                ));
+            } else{
+                echo "<p>Erreur... Veuillez réessayer.</p>";
+            }
+            
             echo "<p>Le genre a bien été ajouté</p>";
-        }
 
-        $requete=$pdo->prepare("INSERT INTO 'genre' ('libelle_genre') 
-        VALUES (:libelle_genre)");
-
-        if($genre){
-            $requete->execute(array(
-                "libelle_genre" => $genre
-            ));
-        } else{
-            echo "<p>Erreur... Veuillez réessayer.</p>";
+            header("Location:index.php?action=formGenre");
+            die;
         }
-        header("Location:index.php?action=addGenre");
         require "view/formGenres.php"; 
     }
 
@@ -169,6 +174,7 @@ class CinemaController{
         require "view/detailActeurs.php"; 
     }
 
+
     //ROLES
     public function listRoles(){ 
         $pdo=Connect::seConnecter();
@@ -196,6 +202,31 @@ class CinemaController{
 
         require "view/detailRoles.php"; 
     }
+
+    public function addRole(){ 
+        $pdo=Connect::seConnecter();
+        if(isset($_POST["submitRole"])){ 
+            $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $requete=$pdo->prepare("INSERT INTO 'role' ('nom_role') 
+            VALUES (:nom_role)");
+    
+            if($genre){
+                $requete->execute(array(
+                    "nom_role" => $role
+                ));
+            } else{
+                echo "<p>Erreur... Veuillez réessayer.</p>";
+            }
+            require "view/formGenres.php"; 
+            
+            echo "<p>Le rôle a bien été ajouté</p>";
+
+            header("Location:index.php?action=addRole");
+            die();
+        }
+    }
+
 
     //REALISATEURS
     public function listRealisateurs(){ 

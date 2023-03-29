@@ -28,6 +28,7 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
             $ctrlCinema->addFilm();
             break;
 
+
         //GENRE
         case "listGenres" :
             $ctrlCinema->listGenres();
@@ -35,6 +36,10 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         
         case "detailGenres" :
             $ctrlCinema->detailGenres($id);
+            break;
+
+        case "formGenres" :
+            $ctrlCinema->addGenre();
             break;
             
         case "addGenre" :
@@ -60,6 +65,10 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "detailRoles" :
             $ctrlCinema->detailRoles($id);
             break;       
+        
+        case "addRole" :
+            $ctrlCinema->addRole();
+            break;
 
 
         //REALISATEURS           

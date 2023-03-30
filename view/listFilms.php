@@ -3,8 +3,8 @@
 ?>
 
 <div class="recap">
-    <p>Il y a <?= $requete->rowCount() ?> films</p>
-    <button><a href="index.php?action=addFilm">Ajouter un film</a></button>
+    <p><?= $requete->rowCount() ?> films</p>
+    <button class="addBtn"><a href="index.php?action=addFilm">Ajouter un film</a></button>
 </div>
 
 <table border=1 style='border-collapse:collapse;'>

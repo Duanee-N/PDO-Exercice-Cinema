@@ -4,11 +4,12 @@
     ?>
 <form action="index.php?action=formFilms" method="post" id="form" enctype="multipart/form-data">
     <div class="formulaire">
+        <h3>Formulaire</h3>
         <div class="box">
             <p>
                 <label>
                     Titre du film :
-                    <input type="text" name="titre">
+                    <input type="text" name="titre" class="input">
                 </label>
             </p>
         </div>
@@ -16,7 +17,7 @@
             <p>
                 <label>
                     Réalisateur :
-                    <select name="realisateur">
+                    <select name="realisateur" class="input">
                     <?php
                             $reals = $requeteReal->fetchAll();
                             foreach($reals as $real){        
@@ -33,7 +34,7 @@
             <p>
                 <label>
                     Année de sortie :
-                    <input type="number" name="anneeSortie">
+                    <input type="number" name="anneeSortie" class="input">
                 </label>
             </p>
         </div>
@@ -41,7 +42,7 @@
             <p>
                 <label>
                     Durée (en minutes) :
-                    <input type="number" min="1" step="1" name="duree">
+                    <input type="number" min="1" step="1" name="duree" class="input">
                 </label>
             </p>
         </div>
@@ -57,7 +58,7 @@
             <p>
                 <label>
                     Synopsis (non obligatoire) :
-                    <textarea name="synopsis"></textarea>
+                    <textarea name="synopsis" class="input"></textarea>
                 </label>
             </p>
         </div>
@@ -65,7 +66,7 @@
             <p>
                 <label>
                     Note (non obligatoire) :
-                    <input type="number" min="0" max="5" name="note">
+                    <input type="number" min="0" max="5" name="note" class="input">
                 </label>
             </p>
         </div>
@@ -73,14 +74,14 @@
             <p>
                 <label>
                     Affiche (non obligatoire) :
-                    <input type="file" name="affiche">
+                    <input type="file" name="affiche" class="input">
                 </label>
             </p>
         </div>
     </div>
-    <div id="submitBtn">
+    <div>
         <p>
-            <input type="submit" name="submitFilm" value="Ajouter un film">
+            <input type="submit" name="submitFilm" value="Ajouter un film" class="submitBtn">
         </p>
     </div>
 </form>

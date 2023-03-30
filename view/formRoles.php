@@ -4,11 +4,12 @@
 ?>
 <form action="index.php?action=addRole" method="post" class="form" enctype="multipart/form-data">
     <div class="formulaire">
+        <h3>Formulaire</h3>
         <div class="box">
             <p>
                 <label>
                     Film :
-                    <select name="film">
+                    <select name="film" class="input">
                         <?php
                         $films = $requeteFilm->fetchAll();
                         foreach($films as $film){
@@ -23,7 +24,7 @@
             <p>
                 <label>
                     Nom du rôle :
-                    <input type="text" name="role">
+                    <input type="text" name="role" class="input">
                 </label>
             </p>
         </div>
@@ -31,7 +32,7 @@
             <p>
                 <label>
                     Acteur :
-                    <select name="acteur">
+                    <select name="acteur" class="input">
                         <?php
                         $acteurs = $requeteActeur->fetchAll();
                         foreach($acteurs as $acteur){
@@ -43,9 +44,9 @@
             </p>
         </div>
     </div>
-    <div id="submitBtn">
+    <div>
         <p>
-            <input type="submit" name="submitRole" value="Ajouter un role">
+            <input type="submit" name="submitRole" value="Ajouter un role" class="submitBtn">
         </p>
     </div>
 </form>

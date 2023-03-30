@@ -3,8 +3,8 @@
 ?>
 
 <div class="recap">
-    <p>Il y a <?= $requete->rowCount() ?> rôles</p>
-    <button><a href="index.php?action=formRoles">Ajouter un rôle</a></button>
+    <p><?= $requete->rowCount() ?> rôles</p>
+    <button class="addBtn"><a href="index.php?action=formRoles">Ajouter un rôle</a></button>
 </div>
 
 <table border=1 style='border-collapse:collapse;'>

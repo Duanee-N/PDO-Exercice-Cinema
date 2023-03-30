@@ -4,18 +4,19 @@
 ?>
 <form action="index.php?action=formGenres" method="post" class="form" enctype="multipart/form-data">
     <div class="formulaire">
+        <h3>Formulaire</h3>
         <div class="box">
             <p>
                 <label>
                     Nom du genre :
-                    <input type="text" name="genre">
+                    <input type="text" name="genre" class="input">
                 </label>
             </p>
         </div>
     </div>
-    <div id="submitBtn">
+    <div>
         <p>
-            <input type="submit" name="submitGenre" value="Ajouter un genre">
+            <input type="submit" name="submitGenre" value="Ajouter un genre" class="submitBtn">
         </p>
     </div>
 </form>

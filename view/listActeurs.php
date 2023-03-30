@@ -4,8 +4,8 @@
 ?>
 
 <div class="recap">
-    <p>Il y a <?= $requete->rowCount() ?> acteurs</p>
-    <button><a href="index.php?action=formActeurs">Ajouter un acteur/une actrice</a></button>
+    <p><?= $requete->rowCount() ?> acteurs/actrices</p>
+    <button class="addBtn"><a href="index.php?action=formActeurs">Ajouter un acteur/une actrice</a></button>
 </div>
 
     <table border=1 style='border-collapse:collapse;'>

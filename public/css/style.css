@@ -1,269 +1,265 @@
+:root{ /*déclaration de variable*/
+    --red: #d82026;
+}
+
 /* ***************GENERAL*************** */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body{
-    background: black;
     background: linear-gradient(90deg, rgba(0,0,0,0.9051995798319328) 0%, rgba(67,67,67,1) 50%, rgba(0,0,0,0.91) 100%);
 }
 
-.xdebug-error, .xe-warning{
-    color: black;
-}
-
 h1{
-    text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0,0,0,0.9);
-    color: #d82026;
+    text-shadow :  0  2px  1px  black,  -1px  3px  1px  black,  -2px  5px  1px  black;
+    color: white;
+    font-size: 3.5vw;
 }
 
 h2{
     color: black;
-}
-
-p, a, h3, ul{
-    color: white;
-}
-
-li{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-}
-
-.red{
-    color: #d82026;
-}
-
-li>a:hover{
-    font-weight: bold;
+    font-size: 1.7vw;
 }
 
 /* ***************HEADER*************** */
-#navbar{
+header #navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    /* gap: 20px;
-    padding-left: 15px; */
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.692);
-    border-top: 2px white dashed;
-    border-bottom: 2px white dashed;
+    padding: 2%;
 }
-
-#nav-content{
+header #navbar #nav-content{
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-#popcorn{
-    width: 35px;
+header #navbar #nav-content #popcorn{
+    width: 3.5vw;
 }
 
-#cineclick{
-    color: #d82026;
+header #navbar #nav-content #cineclick{
+    margin: 0;
+    font-size: 1.5vw;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 0 #fff;
+    color: var(--red);
 }
 
-#menu{
-    list-style-type: none;
+header #navbar #socials{
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#menu>li>a{
-    color: #d82026;
+header #navbar #socials a{
+    margin: 0;
+    font-size: 1vw;
+    margin-right: 3vw;
+    color: rgba(245, 245, 245, 0.762);
 }
 
-#menu>li>a:hover{
-    color: white;
-    text-shadow: -1px -1px 0 #d82026,  1px -1px 0 #d82026, -1px 1px 0 #d82026, 1px 1px 0 #d82026;
+header #navbar #socials a:hover{
+    color: var(--red);
 }
-
 
 /* ***************MAIN*************** */
-#container{
+main{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    min-height: 80vh;
+    align-items: center;
 }
 
-#container #contenu{
+main nav{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-#contenu{
-    gap: 20px;
-}
-
-#titre{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-}
-
-.titre-details{
-    color: white;
-}
-
-.recap{
-    display: flex;
-    gap: 10px;
-}
-
-.recap>p{
-    padding: 7px;
-    background-color: #d82026;
-    text-align: center;
-
-}
-
-.addBtn{
-    padding: 7px;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.addBtn:hover{
-    text-shadow: -1px -1px 0 #d82026,  1px -1px 0 #d82026, -1px 1px 0 #d82026, 1px 1px 0 #d82026;
-}
-
-#filmContent{
-    display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    width: 1000px;
-    text-align: justify;
-    margin: auto;
+    width: 66.3%;
 }
 
-#detailFilms{
+main nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5vw;
+    width: 100%;
+}
+
+main nav ul .lien{
+    margin: 0;
+    /* margin-right: 0.3vw; */
+    height: 80px;
+    font-weight: bold;
+    color: white;
+    text-shadow: -1px -1px 0 #d82026,  1px -1px 0 #d82026, -1px 1px 0 #d82026, 1px 1px 0 #d82026;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+main nav ul .menu, .menu{
+    background-color: black;
+}
+
+main nav ul .clicked, .clicked{
+    background-color: var(--red);
+}
+
+main nav li{
+    width: 18.8%;
+}
+
+main #titre{
+    position: relative;
+    bottom: 8px;
+    width: 66.3%;
+    padding-top: 1vw;
+    background-color: var(--red);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    gap: 1vw;
 }
 
-.fullStars, .emptyStars{
-    color: #d82026;
-}
-
-#detailFilms>p>a:hover{
-    color: #d82026;
-}
-
-.lien:hover{
-    font-weight: bold;
-}
-
-#detailActeurs, #detailRealisateurs, #detailRoles, #detailGenres{
+/* ***************CONTENU*************** */
+main #contenu{
+    position: relative;
+    bottom: 8px;
+    width: 66.3%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
-    gap: 20px;
-}
-
-#detailGenres{
     align-items: center;
+    background-color: black;
+    margin-bottom: 5%;
+    border-radius: 10px;
 }
 
-#detailRoles>p>a:hover{
-    color: #d82026;
-}
-
-#acteurs{
+main #contenu .recap{
+    width: 100%;
+    background-color: var(--red);
     display: flex;
-    flex-direction: column;
-    min-height: 100vh
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    padding: 2%;
 }
 
-table{
+main #contenu .recap p{
+    font-weight: bold;
+    background-color: black;
+    padding: 0.7%;
+    color: var(--red);
+}
+
+main #contenu .recap button{
+    padding: 0.8%;
+    background-color: inherit;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+main #contenu .recap a{
+    color: white;
+}
+
+main #contenu .recap button:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+main #contenu .recap button:hover a{
+    color: var(--red);
+}
+
+main #contenu table{
+    margin: 5%;
+    width: 90%;
+    height: 90%;
+}
+
+main #contenu table th, main #contenu table td{
+    padding: 2%;
+}
+
+main #contenu table, main #contenu table a{
     text-align: center;
     color: white;
 }
 
-th{
-    background-color:rgba(0, 0, 0, 0.692);
-    color: white;
-}
-
-td>a:hover{
-    color: #d82026;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.formulaire{
-    padding: 20px;
-    width: 50%;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    text-transform: uppercase;
-}
-
-.formulaire>h3{
+main #contenu table th{
+    background-color:white;
     color: black;
 }
 
-/* .box{
-    height: 80px;
-} */
-
-label{
-    width: 500px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 13px;
-}
-
-.input{
-    width: 500px;
-    border: none;
-    border-bottom: 1px solid black;
-}
-
-.input:hover{
-    border-bottom: 1px solid #d82026;
-}
-
-.submitBtn{
-    padding: 5px;
+main #contenu table td{
     background-color: black;
+}
+
+main #contenu table td>a:hover{
+    color: var(--red);
+}
+
+/* ***************FOOTER*************** */
+footer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0;
+    padding: 2%;
+    background-color: black;
+}
+
+footer .footer-column ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer .footer-column h3{
     color: white;
-    border-radius: 5px;
+}
+
+footer .footer-column a{
+    color: var(--red);
+}
+
+footer .footer-column a:hover{
+    color: white;
+    text-shadow: -1px -1px 0 #d82026,  1px -1px 0 #d82026, -1px 1px 0 #d82026, 1px 1px 0 #d82026;
+}
+
+/* ***************SCROLL*************** */
+.fa-arrow-up{
+    font-size: 2vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 50px;
+    right: 30px;
+    background-color: var(--red);
+    color: white;
+    padding: 0.7%;
+    width: 3.5%;
+    border-radius: 100%;
     cursor: pointer;
 }
-    
-.submitBtn:hover{
-    background-color: #d82026;
-}
-
-
-/* Inspiration pour plus tard : https://dribbble.com/shots/20718773-The-Website-Concept-for-Cinematography */

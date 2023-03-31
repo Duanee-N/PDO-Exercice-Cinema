@@ -5,9 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial scale=1.0">
         <script src="https://kit.fontawesome.com/2ce970fdf5.js" crossorigin="anonymous"></script>
+        <script src="public/js/script.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet"/>
         <title><?= $titre ?></title>
     </head>
@@ -18,26 +19,47 @@
                     <img src="public/img/nav-icon.png" id="popcorn">
                     <span id="cineclick"><b>CinéClick</b></span>
                 </div>
-                <nav>
-                    <ul id="menu">
-                        <li><a href="index.php?action=listFilms">Films</a></li>
-                        <li><a href="index.php?action=listGenres">Genres</a></li>
-                        <li><a href="index.php?action=listActeurs">Acteurs</a></li>
-                        <li><a href="index.php?action=listRoles">Rôles</a></li>
-                        <li><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
-                    </ul>
-                </nav>
+                <ul id="socials">
+                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
             </div>
         </header>
-        <div id="container">
-            <main>
-                <div id="contenu">
-                    <div id="titre">
-                        <h1>CINÉMA</h1>
-                        <h2><?= $titre_secondaire ?></h2>
-                    </div>
-                    <?= $contenu ?>
-                </div>
-            </main>
-        </div>
+        <main>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.php?action=listFilms" class="lien <?= ($chiffre == 0) ? 'clicked'  : 'menu'?>" id="films">Films</a></li>
+                    <li><a href="index.php?action=listGenres" class="lien <?= ($chiffre == 1) ? 'clicked'  : 'menu'?>" id="genres">Genres</a></li>
+                    <li><a href="index.php?action=listActeurs" class="lien <?= ($chiffre == 2) ? 'clicked'  : 'menu'?>" id="acteurs">Acteurs</a></li>
+                    <li><a href="index.php?action=listRoles" class="lien <?= ($chiffre == 3) ? 'clicked'  : 'menu'?>" id="roles">Rôles</a></li>
+                    <li><a href="index.php?action=listRealisateurs" class="lien <?= ($chiffre == 4) ? 'clicked'  : 'menu'?>" id="realisateur">Réalisateurs</a></li>
+                </ul>
+            </nav>
+            <div id="titre">
+                <h1>CINÉMA</h1>
+                <h2><?= $titre_secondaire ?></h2>
+            </div>
+            <div id="contenu">
+                <?= $contenu ?>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-column">
+                <ul>
+                    <h3>Aide</h3>
+                    <li><a href="#">Contactez-nous</a></li>
+                    <li><a href="#">contact@cineclick.fr</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <ul>
+                    <h3>Informations</h3>
+                    <li><a href="#">Qui sommes-nous ?</a></li>
+                    <li><a href="#">En savoir plus</a></li>
+                </ul>
+            </div>
+        </footer>
+        <a href="#navbar"><i class="fa-solid fa-arrow-up"></i></a>
     </body>
+</html>

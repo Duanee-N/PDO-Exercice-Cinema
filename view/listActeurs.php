@@ -30,6 +30,7 @@
 <?php 
     $titre="Liste des acteurs/actrices";
     $titre_secondaire="Liste des acteurs/actrices";
+    $chiffre=2;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

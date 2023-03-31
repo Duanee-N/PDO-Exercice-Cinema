@@ -39,6 +39,31 @@ class CinemaController{
         require "view/detailFilms.php"; 
     }
 
+    public function affiche(){
+        if(isset($_FILES["affiche"])){
+            $tmpName=$_FILES["affiche"]["tmp_name"];
+            $nameimg=$_FILES["affiche"]["name"];
+            $size=$_FILES["affiche"]["size"];
+            $error=$_FILES["affiche"]["error"];
+            $type=$_FILES["affiche"]["type"];
+
+            $tabExtension=explode(".", $nameimg); //ici, explode découpe une chaîne de caractères à chaque point : permet de vérifier si c'est bien une image qui est upload
+            $extension=strtolower(end($tabExtension)); //end va récupérer le dernier élément du tableau
+            $validExtension=["jpg", "jpeg", "gif", "png", "jfif"];
+
+            if(in_array($extension, $validExtension)&&$error==0){ //si l'extension du fichier fait partie du tableau $validExtension, alors...
+                    $uniqueName=uniqid("", true); //définir un nom unique pour éviter l'écrasement d'une autre image en cas de nom identique
+                    $affiche=$uniqueName.".".$extension;
+                    
+                    move_uploaded_file($tmpName, "public/img/".$affiche); //déplacer l'image de $tmpName vers le dossier img
+            }else{
+                    echo "Erreur fichier ou extension... Veuillez réessayer.";
+            }
+        }else{
+
+        }
+    }
+
     public function addFilm(){ 
         $pdo=Connect::seConnecter();
         if(isset($_POST["submitFilm"])) { //vérification de l'existence de la clé "submitFilm" - = attribut name="submitFilm" - dans le tableau $_POST
@@ -47,51 +72,25 @@ class CinemaController{
             $duree = filter_input(INPUT_POST, "duree", FILTER_VALIDATE_INT);
             $synopsis = (empty($_POST["synopsis"])) ? NULL : filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = (empty($_POST["note"])) ? NULL : filter_input(INPUT_POST, "note", FILTER_VALIDATE_INT); 
-            $affiche = (empty($_POST["affiche"])) ? NULL : affiche(); 
+            $affiche = (empty($_POST["affiche"])) ? NULL : $this->affiche(); 
             $realisateur=filter_input(INPUT_POST, "realisateur", FILTER_VALIDATE_INT); 
 
-            function affiche(){
-                if(isset($_FILES["affiche"])){
-                    $tmpName=$_FILES["affiche"]["tmp_name"];
-                    $nameimg=$_FILES["affiche"]["name"];
-                    $size=$_FILES["affiche"]["size"];
-                    $error=$_FILES["affiche"]["error"];
-                    $type=$_FILES["affiche"]["type"];
-        
-                    $tabExtension=explode(".", $nameimg); //ici, explode découpe une chaîne de caractères à chaque point : permet de vérifier si c'est bien une image qui est upload
-                    $extension=strtolower(end($tabExtension)); //end va récupérer le dernier élément du tableau
-                    $validExtension=["jpg", "jpeg", "gif", "png", "jfif"];
-        
-                    if(in_array($extension, $validExtension)&&$error==0){ //si l'extension du fichier fait partie du tableau $validExtension, alors...
-                            $uniqueName=uniqid("", true); //définir un nom unique pour éviter l'écrasement d'une autre image en cas de nom identique
-                            $affiche=$uniqueName.".".$extension;
-                            
-                            move_uploaded_file($tmpName, "public/img/".$affiche); //déplacer l'image de $tmpName vers le dossier img
-                    }else{
-                            echo "Erreur fichier ou extension... Veuillez réessayer.";
-                    }
-                }else{
-    
-                }
+            $requete=$pdo->prepare("INSERT INTO film (titre_film, annee_sortie_fr, duree, synopsis, note, affiche, id_realisateur) 
+            VALUES (:titre_film, :annee_sortie_fr, :duree, :synopsis, :note, :affiche, :id_realisateur)"); //$_POST['titre_film'] //$titre_film
+            if($titre && $anneeSortie && $duree && $realisateur){ 
+                $requete->execute(array(
+                    "titre_film" => $titre,
+                    "annee_sortie_fr" => $anneeSortie,
+                    "duree" => $duree,
+                    "synopsis" => $synopsis,
+                    "note" => $note,
+                    "affiche" => $affiche,
+                    "id_realisateur" => $realisateur
+                ));
+                echo "<p>Le film a bien été ajouté</p>";
+            } else{
+                echo "<p>Erreur... Veuillez réessayer.</p>";
             }
-
-                $requete=$pdo->prepare("INSERT INTO film (titre_film, annee_sortie_fr, duree, synopsis, note, affiche, id_realisateur) 
-                VALUES (:titre_film, :annee_sortie_fr, :duree, :synopsis, :note, :affiche, :id_realisateur)"); //$_POST['titre_film'] //$titre_film
-                if($titre && $anneeSortie && $duree && $realisateur){ 
-                    $requete->execute(array(
-                        "titre_film" => $titre,
-                        "annee_sortie_fr" => $anneeSortie,
-                        "duree" => $duree,
-                        "synopsis" => $synopsis,
-                        "note" => $note,
-                        "affiche" => $affiche,
-                        "id_realisateur" => $realisateur
-                    ));
-                    echo "<p>Le film a bien été ajouté</p>";
-                } else{
-                    echo "<p>Erreur... Veuillez réessayer.</p>";
-                }
-
             // header("Location:index.php?action=addFilm");
             // die;
         }
@@ -183,7 +182,7 @@ class CinemaController{
             $nom_maj=mb_strtoupper($nom);
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $dateNaissance = $_POST["dateNaissance"];
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance) 
             VALUES (:nom, :prenom, :sexe, :date_naissance)");
@@ -316,7 +315,7 @@ class CinemaController{
             $nom_maj=mb_strtoupper($nom);
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $dateNaissance = $_POST["dateNaissance"];
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance) 
             VALUES (:nom, :prenom, :sexe, :date_naissance)");

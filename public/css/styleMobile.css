@@ -1,0 +1,205 @@
+@media screen and (max-width: 640px){
+    /* ***************GENERAL*************** */
+    h1{
+        font-size: 4vw;
+    }
+
+    h2{
+        font-size: 2vw;
+    }
+    
+    /* ***************HEADER*************** */
+    header #navbar{
+        margin-bottom: 50px;
+    }
+
+    header #navbar #socials{
+        display: none;
+    }
+
+    /* ***************MAIN*************** */
+    main.center{
+        position: relative;
+        top: 110px;
+        margin-bottom: 50%;
+    }
+
+    main nav{
+        display: none;
+    }
+
+    main #titre{
+        gap: 1.5vw;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    /* ***************CONTENU LISTES*************** */
+    main .contenu .recap{
+        gap: 6px;
+        font-size: 11px;
+        padding: 1.7%;
+    }
+
+    main .contenu .recap button{
+        font-size: 11px;
+    }
+
+    main .contenu table{
+        font-size: 13px;
+        box-sizing: border-box;
+        text-align: left;
+        border: 0;
+    }
+
+    main .contenu table, main .contenu table thead, main .contenu table tr, main .contenu table tbody, main .contenu table td{
+        display: block;
+    }
+
+    main .contenu table thead{
+        display: none;
+    }
+
+    main .contenu table td{
+        padding-left: 130px;
+        position: relative;
+        height: 40px;
+    }
+
+    main .contenu table td::before{ /* ::before crée un pseudo-élément qui sera le premier enfant de l'élément ciblé */
+        padding-left: 10px;
+        content: attr(name); /* ici, contenu du pseudo élément */
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 40px;
+        background-color: white;
+        color: black;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: space-around;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    main .contenu table tr{
+        margin-bottom: 5%;
+    }
+    
+    /* ***************CONTENU DETAILS*************** */
+    main .contenu .details li{
+        gap: 8px;
+    }
+    
+    /* ***************CONTENU DETAILS FILMS*************** */
+    main .contenu .details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    main .contenu .details.emptyImg{
+        padding: 2.5vw;
+    }
+
+    main .contenu .details img{
+        width: 90%;
+        padding: 3vw;
+    }
+
+    main .contenu .details #detailFilms{
+        width: 90%;
+    }
+
+    main .contenu .details #detailFilms ul{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* ***************CONTENU DETAILS GENRES*************** */
+    main .contenu.genre{
+        display: flex;
+    }
+
+    main .contenu .details.genres{
+        padding: 5vw 0 0 0;
+    }
+    
+    /* ***************CONTENU DETAILS ACTEURS*************** */
+    main .contenu .details.acteurs{
+        padding: 2.5vw 0 0 2vw;
+    }
+
+    /* ***************CONTENU DETAILS ROLES*************** */
+    main .contenu .details.roles{
+        padding: 3vw 0 0 1vw;
+    }
+
+    /* ***************CONTENU DETAILS REALISATEURS*************** */
+    main .contenu .details.realisateurs{
+        padding: 3vw 0 0 2vw;
+    }
+
+    /* ***************CONTENU FORM************** */
+    main .contenu.space{
+        padding: 2vw 0 2vw 0;
+    }
+
+    main .contenu form .formulaire{
+        padding: 3vw 2vw 4.5vw 2vw;
+        flex-wrap: wrap;
+        width: 70%;
+        align-content: center;
+    }
+
+    main .contenu form .formulaire .box p{
+        height: 6vh;
+        display: flex;
+        gap: 20px;
+    }
+
+    main .contenu form .formulaire label{
+        align-items: center;
+        font-size: 12px;
+        width: 500px;
+    }
+
+    main .contenu form .formulaire label .input{
+        width: 300px;
+    }
+
+    main .contenu form .formulaire label .input.file{
+        opacity: 0;
+        left: 8.5vw;
+        height: 20px;
+        /* width: 621px; */
+        width: 40.5vw;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    main .contenu form .formulaire label span.newInput{
+        width: 300px;
+        border: none;
+        border-bottom: 1px solid black;
+        color: var(--red);
+        font-size: 14px;
+        text-transform: none;
+    }
+
+    /* ***************FOOTER*************** */
+    footer{
+        font-size: 12px;
+    }
+
+    /* ***************SCROLL*************** */
+    .fa-arrow-up{
+        bottom: 35px;
+        right: 30px;
+    }
+}

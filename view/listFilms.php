@@ -19,10 +19,10 @@
     <tbody>
         <?php foreach($requete->fetchAll() as $film){ ?>
             <tr>
-                <td><a href="index.php?action=detailFilms&id=<?= $film["id_film"] ?>"><?= $film["titre_film"] ?></a></td>
-                <td><?= $film["annee_sortie_fr"] ?></td>
-                <td><a href='index.php?action=detailRealisateurs&id=<?= $film["id_realisateur"] ?>'><?= $film["prenom"] ?> <?= $film["nom"] ?><a></td>
-                <td><?= $film["duree"] ?></td></tr>
+                <td name="Titre"><a href="index.php?action=detailFilms&id=<?= $film["id_film"] ?>"><?= $film["titre_film"] ?></a></td>
+                <td name="Année"><?= $film["annee_sortie_fr"] ?></td>
+                <td name="Réalisateur"><a href='index.php?action=detailRealisateurs&id=<?= $film["id_realisateur"] ?>'><?= $film["prenom"] ?> <?= $film["nom"] ?><a></td>
+                <td name="Durée"><?= $film["duree"] ?></td></tr>
             </tr>
         <?php } ?>
     </tbody>

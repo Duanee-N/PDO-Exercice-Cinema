@@ -1,8 +1,9 @@
 <?php 
     session_start();
     ob_start();
-    ?>
-<form action="index.php?action=formFilms" method="post" id="form" enctype="multipart/form-data">
+?>
+
+<form action="index.php?action=formFilms" method="post" class="form" enctype="multipart/form-data">
     <div class="formulaire">
         <h3>Formulaire</h3>
         <div class="box">
@@ -46,14 +47,23 @@
                 </label>
             </p>
         </div>
-        <!-- <div class="box">
+        <div class="box">
             <p>
                 <label>
                     Genre :
-                    <input type="#" name="genre">
+                    <select name="genre" class="input">
+                    <?php
+                            $genres = $requeteGenre->fetchAll();
+                            foreach($genres as $genre){        
+                    ?>
+                        <option value="<?= $genre["id_genre"] ?>"><?=  $genre["libelle_genre"] ?></option>
+                    <?php
+                        }
+                    ?>
+                    </select>
                 </label>
             </p>
-        </div> -->
+        </div>
         <div class="box">
             <p>
                 <label>
@@ -72,16 +82,16 @@
         </div>
         <div class="box">
             <p>
-                <label>
+                <label class="input img">
                     Affiche (non obligatoire) :
-                    <input type="file" name="affiche" class="input">
+                    <span class="newInput"><input type="file" name="affiche" class="input file">Choisir un fichier</span>
                 </label>
             </p>
         </div>
     </div>
     <div>
         <p>
-            <input type="submit" name="submitFilm" value="Ajouter un film" class="submitBtn">
+            <input type="submit" name="submitFilm" value="Envoyer le formulaire" class="submitBtn">
         </p>
     </div>
 </form>
@@ -89,6 +99,8 @@
 <?php
     $titre="Ajouter un film";
     $titre_secondaire="Ajouter un film";
+    $chiffre=0;
+    $space=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

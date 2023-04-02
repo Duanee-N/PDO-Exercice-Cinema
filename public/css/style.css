@@ -28,12 +28,17 @@ h2{
     font-size: 1.7vw;
 }
 
+.red{
+    color: var(--red);
+}
+
 /* ***************HEADER*************** */
 header #navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2%;
+    margin-bottom: 20px;
 }
 header #navbar #nav-content{
     display: flex;
@@ -125,6 +130,7 @@ main #titre{
     bottom: 8px;
     width: 66.3%;
     padding-top: 1vw;
+    padding-bottom: 1vw;
     background-color: var(--red);
     display: flex;
     flex-direction: column;
@@ -132,8 +138,8 @@ main #titre{
     gap: 1vw;
 }
 
-/* ***************CONTENU*************** */
-main #contenu{
+/* ***************CONTENU LISTES*************** */
+main .contenu{
     position: relative;
     bottom: 8px;
     width: 66.3%;
@@ -144,10 +150,16 @@ main #contenu{
     align-items: center;
     background-color: black;
     margin-bottom: 5%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-main #contenu .recap{
+main .contenu.role{
+    margin-bottom: 13.5vh;
+}
+
+main .contenu .recap{
     width: 100%;
     background-color: var(--red);
     display: flex;
@@ -159,14 +171,14 @@ main #contenu .recap{
     padding: 2%;
 }
 
-main #contenu .recap p{
+main .contenu .recap p{
     font-weight: bold;
     background-color: black;
     padding: 0.7%;
     color: var(--red);
 }
 
-main #contenu .recap button{
+main .contenu .recap button{
     padding: 0.8%;
     background-color: inherit;
     border: 1px solid white;
@@ -175,45 +187,240 @@ main #contenu .recap button{
     font-weight: bold;
 }
 
-main #contenu .recap a{
+main .contenu .recap a{
     color: white;
 }
 
-main #contenu .recap button:hover{
+main .contenu .recap button:hover{
     cursor: pointer;
     background-color: white;
 }
 
-main #contenu .recap button:hover a{
+main .contenu .recap button:hover a{
     color: var(--red);
 }
 
-main #contenu table{
+main .contenu table{
     margin: 5%;
     width: 90%;
     height: 90%;
 }
 
-main #contenu table th, main #contenu table td{
+main .contenu table th, main .contenu table td{
     padding: 2%;
 }
 
-main #contenu table, main #contenu table a{
+main .contenu table, main .contenu table a{
     text-align: center;
     color: white;
 }
 
-main #contenu table th{
+main .contenu table th{
     background-color:white;
     color: black;
 }
 
-main #contenu table td{
+main .contenu table td{
     background-color: black;
 }
 
-main #contenu table td>a:hover{
+main .contenu table td>a:hover{
     color: var(--red);
+}
+
+/* ***************CONTENU DETAILS************** */
+main .contenu .details li{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+main .contenu .details a{
+    color: white;
+}
+
+main .contenu .details a:hover{
+    font-weight: bold;
+}
+
+/* ***************CONTENU DETAILS FILMS*************** */
+main .contenu .details.img{
+    display: flex;
+    color: white;
+}
+
+main .contenu .details.emptyImg{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: white;
+    padding-left: 1vw;
+}
+
+main .contenu .details.emptyImg img{
+    display: none;
+}
+
+main .contenu .details img{
+    padding: 1vw;
+}
+
+main .contenu .details #detailFilms{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    text-align: justify;
+    padding: 2vw 1vw 0 0;
+}
+
+main .contenu .details #detailFilms p>a{
+    color: var(--red);
+}
+
+/* ***************CONTENU DETAILS GENRES*************** */
+main .contenu .details.genres{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+    padding: 3vw 0 0 1vw;
+    width: 100%;
+    color: white;
+}
+
+/* ***************CONTENU DETAILS ACTEURS*************** */
+main .contenu .details.acteurs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 1.5vw 0 0 2vw;
+    width: 100%;
+    color: white;
+}
+
+/* ***************CONTENU DETAILS ROLES*************** */
+main .contenu .details.roles{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 25px;
+    padding: 1.5vw 0 0 1vw;
+    width: 100%;
+    color: white;
+}
+
+main .contenu .details.roles p>a{
+    color: var(--red);
+}
+
+/* ***************CONTENU DETAILS REALISATEURS*************** */
+main .contenu .details.realisateurs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 1.5vw 0 0 2vw;
+    width: 100%;
+    color: white;
+}
+
+/* ***************CONTENU FORM************** */
+main .contenu form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 2vw 0 2vw 0;
+}
+
+main .contenu form .formulaire{
+    padding: 2vw;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-transform: uppercase;
+}
+
+main .contenu form .formulaire>h3{
+    color: black;
+}
+
+main .contenu form .formulaire .box p{
+    height: 6vh;
+    display: flex;
+    gap: 20px;
+}
+
+main .contenu form .formulaire label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 15px;
+    width: 500px;
+    color: black;
+}
+
+main .contenu form .formulaire label .input{
+    width: 500px;
+    border: none;
+    border-bottom: 1px solid black;
+    color: var(--red);
+}
+
+main .contenu form .formulaire label .input:hover{
+    border-bottom: 1px solid var(--red);
+}
+
+main .contenu form .formulaire label .input.img{
+    color: var(--red);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+main .contenu form .formulaire label .input.file{
+    opacity: 0;
+    left: 8.5vw;
+    height: 20px;
+    /* width: 621px; */
+    width: 40.5vw;
+    position: absolute;
+    cursor: pointer;
+}
+
+main .contenu form .formulaire label span.newInput{
+    width: 500px;
+    border: none;
+    border-bottom: 1px solid black;
+    color: var(--red);
+    font-size: 14px;
+    text-transform: none;
+}
+
+main .contenu form .submitBtn{
+    padding: 7%;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--red);
+    background-color: inherit;
+    border: 1px solid var(--red);
+    border-radius: 5px;
+    cursor: pointer;
+}
+    
+main .contenu form .submitBtn:hover{
+    background-color: var(--red);
+    color: white;
 }
 
 /* ***************FOOTER*************** */
@@ -224,9 +431,19 @@ footer{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 0;
+    margin-top: 30px;
     padding: 2%;
     background-color: black;
+}
+
+footer>a{
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+footer .footer-column.role{
+    padding-top: 4vw;
 }
 
 footer .footer-column ul{

@@ -5,7 +5,7 @@
     // var_dump($casting);die;
     $acteur=$requete->fetchAll();
 ?>
-<div id="detailActeurs">
+<div class="details acteurs">
     <p>Date de naissance : <?= $acteur[0]["date_naissance"] ?></p>
     <p>Sexe : <?= $acteur[0]["sexe"] ?></p>
     <p>Rôles : <ul>
@@ -20,6 +20,8 @@
 <?php 
     $titre="Détails de l'acteur/l'actrice";
     $titre_secondaire="<h2 class=titre-details>Acteur/Actrice : ".$acteur[0]["prenom"]." ".$acteur[0]["nom"]."</h2>";
+    $chiffre=2;
+    $center=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

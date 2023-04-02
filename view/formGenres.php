@@ -16,7 +16,7 @@
     </div>
     <div>
         <p>
-            <input type="submit" name="submitGenre" value="Ajouter un genre" class="submitBtn">
+            <input type="submit" name="submitGenre" value="Envoyer le formulaire" class="submitBtn">
         </p>
     </div>
 </form>
@@ -24,6 +24,9 @@
 <?php
     $titre="Ajouter un genre";
     $titre_secondaire="Ajouter un genre";
+    $chiffre=1;
+    $center=1;
+    $space=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

@@ -46,7 +46,7 @@
     </div>
     <div>
         <p>
-            <input type="submit" name="submitRole" value="Ajouter un role" class="submitBtn">
+            <input type="submit" name="submitRole" value="Envoyer le formulaire" class="submitBtn">
         </p>
     </div>
 </form>
@@ -54,6 +54,8 @@
 <?php
     $titre="Ajouter un rôle";
     $titre_secondaire="Ajouter un rôle";
+    $chiffre=3;
+    $space=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

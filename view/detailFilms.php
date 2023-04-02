@@ -1,9 +1,16 @@
 <?php 
     ob_start();
     $film=$requete1->fetch();
+
+    if(!empty($film["affiche"])){
+        $img=1;
+    } else{
+        $img=0;
+        $center=1;
+    }
 ?>
 
-<div id="filmContent">
+<div class="details <?= ($img == 1) ? 'img'  : 'emptyImg' ?>">
     <img src='<?= $film["affiche"] ?>'width=470>
     <div id="detailFilms">
         <p>Réalisateur : <a href='index.php?action=detailRealisateurs&id=<?= $film["id_realisateur"] ?>'><?= $film["prenom"] ?> <?= $film["nom"] ?></a></p>
@@ -40,6 +47,7 @@
 <?php
     $titre="Détails du film";
     $titre_secondaire="<h2 class=titre-details>Film : ".$film["titre_film"]."</h2>";
+    $chiffre=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

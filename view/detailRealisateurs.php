@@ -2,7 +2,7 @@
     ob_start();
     $realisateur=$requete->fetchAll();
 ?>
-<div id="detailRealisateurs">
+<div class="details realisateurs">
         <p>Date de naissance : <?= $realisateur[0]["date_naissance"] ?></p>
         <p>Sexe : <?= $realisateur[0]["sexe"] ?></p>
         <p>Films réalisés : <br><ul>
@@ -17,6 +17,8 @@ foreach($realisateur as $filmographie){
 <?php 
     $titre="Détails du réalisateur/de la réalisatrice";
     $titre_secondaire="<h2 class=titre-details>Réalisateur/Réalisatrice : ".$realisateur[0]["prenom"]." ".$realisateur[0]["nom"]."</h2>";
+    $chiffre=4;
+    $center=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

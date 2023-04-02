@@ -43,7 +43,7 @@
     </div>
     <div>
         <p>
-            <input type="submit" name="submitActeur" value="Ajouter un acteur/une actrice" class="submitBtn">
+            <input type="submit" name="submitActeur" value="Envoyer le formulaire" class="submitBtn">
         </p>
     </div>
 </form>
@@ -51,6 +51,8 @@
 <?php
     $titre="Ajouter un acteur/une actrice";
     $titre_secondaire="Ajouter un acteur/une actrice";
+    $chiffre=2;
+    $space=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

@@ -18,8 +18,8 @@
     <tbody>
         <?php foreach($list as $genre){ ?>
             <tr>
-                <td><a href='index.php?action=detailGenres&id=<?= $genre["id_genre"] ?>'><?= $genre["libelle_genre"] ?><a></td>
-                <td><?= $genre["nbFilmGenre"] ?></td>
+                <td name="Genre"><a href='index.php?action=detailGenres&id=<?= $genre["id_genre"] ?>'><?= $genre["libelle_genre"] ?><a></td>
+                <td name="Nombre de films"><?= $genre["nbFilmGenre"] ?></td>
             </tr>
         <?php } ?>
     </tbody>

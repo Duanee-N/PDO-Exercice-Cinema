@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet"/>
+        <link href="public/css/styleMobile.css" rel="stylesheet"/>
         <title><?= $titre ?></title>
     </head>
     <body>
@@ -26,7 +27,7 @@
                 </ul>
             </div>
         </header>
-        <main>
+        <main class="<?= ($center == 1) ? 'center'  : ''?>">
             <nav>
                 <ul id="menu">
                     <li><a href="index.php?action=listFilms" class="lien <?= ($chiffre == 0) ? 'clicked'  : 'menu'?>" id="films">Films</a></li>
@@ -40,7 +41,7 @@
                 <h1>CINÉMA</h1>
                 <h2><?= $titre_secondaire ?></h2>
             </div>
-            <div id="contenu">
+            <div class="contenu <?= ($chiffre == 3) ? 'role'  : ''?> <?= ($chiffre == 1) ? 'genre'  : ''?> <?= ($space == 1) ? 'space'  : ''?>">
                 <?= $contenu ?>
             </div>
         </main>

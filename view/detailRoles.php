@@ -3,7 +3,7 @@
     $film=$requete->fetchAll();
 ?>
 
-<div id="detailRoles">
+<div class="details roles">
     <p>Film : <a href="index.php?action=detailFilms&id=<?= $film[0]["id_film"] ?>"><?= $film[0]["titre_film"] ?> (<?= $film[0]["annee_sortie_fr"] ?>)</a></p>
     <p>Interprété par : </p>
     <ul>
@@ -18,6 +18,8 @@
 <?php
     $titre="Détails du rôle";
     $titre_secondaire="<h2 class=titre-details>Rôle : ".$role["nom_role"]."</h2>";
+    $chiffre=3;
+    $center=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

@@ -2,7 +2,7 @@
     ob_start();
     $genres=$requete->fetchAll();
 ?>
-<div id="detailGenres">
+<div class="details genres">
     <p>Liste des films : <br><ul>
             
     <?php
@@ -16,6 +16,8 @@
 <?php
     $titre="Détails du genre";
     $titre_secondaire="<h2 class=titre-details>Genre : ".$genre["libelle_genre"]."</h2>";
+    $chiffre=1;
+    $center=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

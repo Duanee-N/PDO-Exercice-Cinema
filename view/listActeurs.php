@@ -19,9 +19,9 @@
         <tbody>
             <?php foreach($list as $acteur){ ?>
                 <tr>
-                    <td><a href='index.php?action=detailActeurs&id=<?= $acteur["id_acteur"] ?>'><?= $acteur["prenom"] ?> <?= $acteur["nom"] ?></a></td>
-                    <td><?= $acteur["sexe"] ?></td>
-                    <td><?= $acteur["date_naissance"] ?></td>
+                    <td name="Nom"><a href='index.php?action=detailActeurs&id=<?= $acteur["id_acteur"] ?>'><?= $acteur["prenom"] ?> <?= $acteur["nom"] ?></a></td>
+                    <td name="Sexe"><?= $acteur["sexe"] ?></td>
+                    <td name="Date de naissance"><?= $acteur["date_naissance"] ?></td>
                 </tr>
             <?php } ?>
         </tbody>

@@ -18,9 +18,9 @@
     <tbody>
         <?php foreach($requete->fetchAll() as $role){ ?>
             <tr>
-                <td><a href="index.php?action=detailFilms&id=<?= $role["id_film"] ?>"><?= $role["titre_film"] ?></a></td>
-                <td><a href='index.php?action=detailActeurs&id=<?= $role["id_acteur"] ?>'><?= $role["prenom"] ?> <?= $role["nom"] ?></a></td>
-                <td><a href='index.php?action=detailRoles&id=<?= $role["id_role"] ?>'><?= $role["nom_role"] ?></a></td></tr>
+                <td name="Film"><a href="index.php?action=detailFilms&id=<?= $role["id_film"] ?>"><?= $role["titre_film"] ?></a></td>
+                <td name="Acteur"><a href='index.php?action=detailActeurs&id=<?= $role["id_acteur"] ?>'><?= $role["prenom"] ?> <?= $role["nom"] ?></a></td>
+                <td name="Rôle"><a href='index.php?action=detailRoles&id=<?= $role["id_role"] ?>'><?= $role["nom_role"] ?></a></td></tr>
             </tr>
         <?php } ?>
     </tbody>

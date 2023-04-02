@@ -73,11 +73,12 @@ class CinemaController{
             $synopsis = (empty($_POST["synopsis"])) ? NULL : filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = (empty($_POST["note"])) ? NULL : filter_input(INPUT_POST, "note", FILTER_VALIDATE_INT); 
             $affiche = (empty($_POST["affiche"])) ? NULL : $this->affiche(); 
-            $realisateur=filter_input(INPUT_POST, "realisateur", FILTER_VALIDATE_INT); 
+            $realisateur=filter_input(INPUT_POST, "realisateur", FILTER_VALIDATE_INT);
+            $genre=filter_input(INPUT_POST, "genre", FILTER_VALIDATE_INT); 
 
             $requete=$pdo->prepare("INSERT INTO film (titre_film, annee_sortie_fr, duree, synopsis, note, affiche, id_realisateur) 
             VALUES (:titre_film, :annee_sortie_fr, :duree, :synopsis, :note, :affiche, :id_realisateur)"); //$_POST['titre_film'] //$titre_film
-            if($titre && $anneeSortie && $duree && $realisateur){ 
+            if($titre && $anneeSortie && $duree && $realisateur && $genre){ 
                 $requete->execute(array(
                     "titre_film" => $titre,
                     "annee_sortie_fr" => $anneeSortie,
@@ -85,7 +86,8 @@ class CinemaController{
                     "synopsis" => $synopsis,
                     "note" => $note,
                     "affiche" => $affiche,
-                    "id_realisateur" => $realisateur
+                    "id_realisateur" => $realisateur,
+                    "id_genre" => $genre
                 ));
                 echo "<p>Le film a bien été ajouté</p>";
             } else{
@@ -100,6 +102,11 @@ class CinemaController{
         INNER JOIN personne p ON p.id_personne = r.id_personne
         GROUP BY r.id_realisateur
         ORDER BY nom");
+
+        $requeteGenre=$pdo->query("SELECT g.id_genre, g.libelle_genre
+        FROM genre g
+        GROUP BY g.id_genre
+        ORDER BY libelle_genre");
 
         require "view/formFilms.php"; 
     }

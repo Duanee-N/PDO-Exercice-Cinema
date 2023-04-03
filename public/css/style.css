@@ -14,6 +14,7 @@
 }
 
 body{
+    height: 100vh;
     background: linear-gradient(90deg, rgba(0,0,0,0.9051995798319328) 0%, rgba(67,67,67,1) 50%, rgba(0,0,0,0.91) 100%);
 }
 
@@ -244,7 +245,6 @@ main .contenu .details a:hover{
     font-weight: bold;
 }
 
-/* ***************CONTENU DETAILS FILMS*************** */
 main .contenu .details.img{
     display: flex;
     color: white;
@@ -266,15 +266,14 @@ main .contenu .details.emptyImg img{
 main .contenu .details img{
     padding: 1vw;
 }
-
-main .contenu .details #detailFilms{
+/* ***************CONTENU DETAILS FILMS*************** */
+main .contenu .details #detailFilms, main .contenu .details #detailActeurs{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
     text-align: justify;
-    padding: 2vw 1vw 0 0;
 }
 
 main .contenu .details #detailFilms p>a{
@@ -338,6 +337,11 @@ main .contenu form{
     align-items: center;
     gap: 25px;
     padding: 2vw 0 2vw 0;
+    width: 100%;
+}
+
+main .contenu form.form{
+    width: 100%;
 }
 
 main .contenu form .formulaire{
@@ -349,30 +353,37 @@ main .contenu form .formulaire{
     align-items: center;
     gap: 25px;
     text-transform: uppercase;
+    width: 90%;
 }
 
 main .contenu form .formulaire>h3{
     color: black;
 }
 
+main .contenu form .formulaire .box{
+    width: 90%;
+}
+
 main .contenu form .formulaire .box p{
+    width: 100%;
     height: 6vh;
     display: flex;
     gap: 20px;
 }
 
 main .contenu form .formulaire label{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
     font-size: 15px;
-    width: 500px;
+    /* width: 500px; */
     color: black;
 }
 
 main .contenu form .formulaire label .input{
-    width: 500px;
+    width: 100%;
     border: none;
     border-bottom: 1px solid black;
     color: var(--red);
@@ -390,16 +401,20 @@ main .contenu form .formulaire label .input.img{
 
 main .contenu form .formulaire label .input.file{
     opacity: 0;
-    left: 8.5vw;
-    height: 20px;
-    /* width: 621px; */
-    width: 40.5vw;
+    z-index: 0;
+    height: 17.6px;
+    width: 769px;
     position: absolute;
+    /* width: 621px; */
+    /* width: 40.5vw; */
     cursor: pointer;
 }
 
 main .contenu form .formulaire label span.newInput{
-    width: 500px;
+    /* width: 500px; */
+    height: 20px;
+    z-index: 1;
+    width: 100%;
     border: none;
     border-bottom: 1px solid black;
     color: var(--red);
@@ -409,7 +424,6 @@ main .contenu form .formulaire label span.newInput{
 
 main .contenu form .submitBtn{
     padding: 7%;
-    cursor: pointer;
     font-weight: bold;
     color: var(--red);
     background-color: inherit;
@@ -426,10 +440,9 @@ main .contenu form .submitBtn:hover{
 /* ***************FOOTER*************** */
 footer{
     width: 100%;
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 30px;
     padding: 2%;

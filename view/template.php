@@ -45,7 +45,7 @@
                 <?= $contenu ?>
             </div>
         </main>
-        <footer>
+        <footer class="<?= ($footer == 1) ? 'footer'  : ''?> <?= ($footerSize == 1) ? 'footerSize'  : ''?>">
             <div class="footer-column">
                 <ul>
                     <h3>Aide</h3>

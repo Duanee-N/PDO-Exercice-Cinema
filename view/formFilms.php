@@ -101,6 +101,9 @@
     $titre_secondaire="Ajouter un film";
     $chiffre=0;
     $space=1;
+    $center=0;
+    $footer=0;
+    $footerSize=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

@@ -40,6 +40,14 @@
                 </label>
             </p>
         </div>
+        <div class="box">
+            <p>
+                <label class="input img">
+                    Image (non obligatoire) :
+                    <span class="newInput"><input type="file" name="affiche" class="input file">Choisir un fichier</span>
+                </label>
+            </p>
+        </div>
     </div>
     <div>
         <p>

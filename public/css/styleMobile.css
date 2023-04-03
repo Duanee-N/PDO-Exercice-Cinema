@@ -1,16 +1,25 @@
 @media screen and (max-width: 640px){
     /* ***************GENERAL*************** */
     h1{
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     h2{
-        font-size: 2vw;
+        font-size: 4.8vw;
+        text-align: center;
     }
     
     /* ***************HEADER*************** */
     header #navbar{
-        margin-bottom: 50px;
+        margin-bottom: 40px;
+    }
+
+    header #navbar #nav-content #popcorn{
+        width: 13vw;
+    }
+
+    header #navbar #nav-content #cineclick{
+        font-size: 5vw;
     }
 
     header #navbar #socials{
@@ -19,9 +28,8 @@
 
     /* ***************MAIN*************** */
     main.center{
-        position: relative;
-        top: 110px;
-        margin-bottom: 50%;
+        margin-top: 56%;
+        margin-bottom: 56%;
     }
 
     main nav{
@@ -29,16 +37,23 @@
     }
 
     main #titre{
-        gap: 1.5vw;
+        gap: 2vw;
+        min-width: 300px;
+        padding-top: 4vw;
+        padding-bottom: 2vw;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
     }
 
     /* ***************CONTENU LISTES*************** */
+    main .contenu{
+        min-width: 300px;
+    }
+
     main .contenu .recap{
         gap: 6px;
         font-size: 11px;
-        padding: 1.7%;
+        padding: 3vw;
     }
 
     main .contenu .recap button{
@@ -64,6 +79,12 @@
         padding-left: 130px;
         position: relative;
         height: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: space-around;
+        justify-content: center;
+        width: 100%;
     }
 
     main .contenu table td::before{ /* ::before crée un pseudo-élément qui sera le premier enfant de l'élément ciblé */
@@ -90,11 +111,18 @@
     }
     
     /* ***************CONTENU DETAILS*************** */
+    main .contenu .details ul{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
     main .contenu .details li{
         gap: 8px;
     }
     
-    /* ***************CONTENU DETAILS FILMS*************** */
+    /* ***************CONTENU DETAILS*************** */
     main .contenu .details{
         display: flex;
         flex-direction: column;
@@ -108,11 +136,14 @@
 
     main .contenu .details img{
         width: 90%;
-        padding: 3vw;
+        padding: 5.5vw;
     }
 
+    /* ***************CONTENU DETAILS FILMS*************** */
     main .contenu .details #detailFilms{
+        padding-left: 2vw;
         width: 90%;
+        text-align: start;
     }
 
     main .contenu .details #detailFilms ul{
@@ -127,79 +158,105 @@
     }
 
     main .contenu .details.genres{
-        padding: 5vw 0 0 0;
+        padding: 7vw 0 1vw 5vw;
+        margin-bottom: -30px;
+        align-items: flex-start;
     }
     
     /* ***************CONTENU DETAILS ACTEURS*************** */
     main .contenu .details.acteurs{
-        padding: 2.5vw 0 0 2vw;
+        padding: 2.5vw 0 0 4vw;
+        align-items: flex-start;
     }
-
+    main .contenu .details.acteurs #detailActeurs{
+        text-align: start;
+    }
+    
     /* ***************CONTENU DETAILS ROLES*************** */
     main .contenu .details.roles{
-        padding: 3vw 0 0 1vw;
+        padding: 4vw 0 0 0;
+        align-items: flex-start;
     }
 
     /* ***************CONTENU DETAILS REALISATEURS*************** */
     main .contenu .details.realisateurs{
-        padding: 3vw 0 0 2vw;
+        padding: 3vw 0 0 5vw;
+        align-items: flex-start;
     }
 
     /* ***************CONTENU FORM************** */
     main .contenu.space{
-        padding: 2vw 0 2vw 0;
+        padding: 2.5vw 0 2vw 0;
+    }
+
+    main .contenu form{
+        min-width: 200px;
     }
 
     main .contenu form .formulaire{
         padding: 3vw 2vw 4.5vw 2vw;
         flex-wrap: wrap;
-        width: 70%;
+        /* width: 43%; */
         align-content: center;
     }
 
     main .contenu form .formulaire .box p{
         height: 6vh;
-        display: flex;
         gap: 20px;
     }
 
     main .contenu form .formulaire label{
-        align-items: center;
         font-size: 12px;
-        width: 500px;
+        /* width: 500px; */
     }
 
-    main .contenu form .formulaire label .input{
-        width: 300px;
-    }
+    /* main .contenu form .formulaire label .input{
+        width: 150px;
+    } */
 
     main .contenu form .formulaire label .input.file{
         opacity: 0;
-        left: 8.5vw;
-        height: 20px;
-        /* width: 621px; */
-        width: 40.5vw;
-        position: absolute;
+        /* left: 8.5vw;
+        height: 20px; */
+        max-width: 300px;
+        /* width: 40.5vw; */
+        width: 231px;
         cursor: pointer;
     }
 
-    main .contenu form .formulaire label span.newInput{
-        width: 300px;
+    main .contenu form .formulaire label span .newInput{
+        /* width: 170px; */
         border: none;
         border-bottom: 1px solid black;
         color: var(--red);
-        font-size: 14px;
+        font-size: 20px;
         text-transform: none;
+        /* display: flex; */
+    }
+
+    main .contenu form .submitBtn{
+        position: relative;
+        left: -8px;
+        padding: 6%;
     }
 
     /* ***************FOOTER*************** */
     footer{
         font-size: 12px;
+        padding: 4% 2% 4% 2%;
     }
+
+    footer.footer{
+        margin-top: 5%;
+    }
+
+    /* footer.footerSize{
+        width: 445px;
+    } */
 
     /* ***************SCROLL*************** */
     .fa-arrow-up{
         bottom: 35px;
-        right: 30px;
+        right: 5px;
     }
 }

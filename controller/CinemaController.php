@@ -170,7 +170,7 @@ class CinemaController{
 
     public function detailActeurs($id){ 
         $pdo=Connect::seConnecter(); 
-        $requete=$pdo->prepare("SELECT f.id_film, titre_film, annee_sortie_fr, prenom, nom, r.id_role, nom_role, date_naissance, sexe
+        $requete=$pdo->prepare("SELECT f.id_film, titre_film, annee_sortie_fr, prenom, nom, r.id_role, nom_role, date_naissance, sexe, p.portrait
         FROM casting c
         INNER JOIN film f ON f.id_film = c.id_film
         INNER JOIN acteur a ON a.id_acteur = c.id_acteur
@@ -182,6 +182,31 @@ class CinemaController{
         require "view/detailActeurs.php"; 
     }
 
+    public function portrait(){
+        if(isset($_FILES["portrait"])){
+            $tmpName=$_FILES["portrait"]["tmp_name"];
+            $nameimg=$_FILES["portrait"]["name"];
+            $size=$_FILES["portrait"]["size"];
+            $error=$_FILES["portrait"]["error"];
+            $type=$_FILES["portrait"]["type"];
+
+            $tabExtension=explode(".", $nameimg); //ici, explode découpe une chaîne de caractères à chaque point : permet de vérifier si c'est bien une image qui est upload
+            $extension=strtolower(end($tabExtension)); //end va récupérer le dernier élément du tableau
+            $validExtension=["jpg", "jpeg", "gif", "png", "jfif"];
+
+            if(in_array($extension, $validExtension)&&$error==0){ //si l'extension du fichier fait partie du tableau $validExtension, alors...
+                    $uniqueName=uniqid("", true); //définir un nom unique pour éviter l'écrasement d'une autre image en cas de nom identique
+                    $portrait=$uniqueName.".".$extension;
+                    
+                    move_uploaded_file($tmpName, "public/img/".$portrait); //déplacer l'image de $tmpName vers le dossier img
+            }else{
+                    echo "Erreur fichier ou extension... Veuillez réessayer.";
+            }
+        }else{
+
+        }
+    }
+
     public function addActeur(){ 
         $pdo=Connect::seConnecter();
         if(isset($_POST["submitActeur"])){ 
@@ -190,16 +215,18 @@ class CinemaController{
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $portrait = (empty($_POST["portrait"])) ? NULL : $this->portrait(); 
 
-            $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance) 
-            VALUES (:nom, :prenom, :sexe, :date_naissance)");
+            $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance, portrait) 
+            VALUES (:nom, :prenom, :sexe, :date_naissance, :portrait)");
     
             if($nom && $prenom && $sexe && $dateNaissance){
                 $requete->execute([
                     "nom" => $nom_maj,
                     "prenom" => $prenom,
                     "sexe" => $sexe,
-                    "date_naissance" => $dateNaissance
+                    "date_naissance" => $dateNaissance,
+                    "portrait" => $portrait
                 ]);
                 
                 $id=$pdo->lastInsertId(); //permet de récupérer l'id de la dernière ligne insérée
@@ -305,7 +332,7 @@ class CinemaController{
 
     public function detailRealisateurs($id){ 
         $pdo=Connect::seConnecter(); 
-        $requete=$pdo->prepare("SELECT prenom, nom, date_naissance, sexe, id_film, titre_film, annee_sortie_fr
+        $requete=$pdo->prepare("SELECT prenom, nom, date_naissance, sexe, id_film, titre_film, annee_sortie_fr, portrait
         FROM film f
         INNER JOIN realisateur r ON r.id_realisateur = f.id_realisateur
         INNER JOIN personne p ON p.id_personne = r.id_personne
@@ -323,16 +350,18 @@ class CinemaController{
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $portrait = (empty($_POST["portrait"])) ? NULL : $this->portrait(); 
 
-            $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance) 
-            VALUES (:nom, :prenom, :sexe, :date_naissance)");
+            $requete=$pdo->prepare("INSERT INTO personne (nom, prenom, sexe, date_naissance, portrait) 
+            VALUES (:nom, :prenom, :sexe, :date_naissance, :portrait)");
     
             if($nom && $prenom && $sexe && $dateNaissance){
                 $requete->execute([
                     "nom" => $nom_maj,
                     "prenom" => $prenom,
                     "sexe" => $sexe,
-                    "date_naissance" => $dateNaissance
+                    "date_naissance" => $dateNaissance,
+                    "portrait" => $portrait
                 ]);
                 
                 $id=$pdo->lastInsertId(); //permet de récupérer l'id de la dernière ligne insérée

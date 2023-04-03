@@ -48,6 +48,7 @@
     $titre="Détails du film";
     $titre_secondaire="<h2 class=titre-details>Film : ".$film["titre_film"]."</h2>";
     $chiffre=0;
+    $space=1;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

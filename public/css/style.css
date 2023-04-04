@@ -41,6 +41,7 @@ header #navbar{
     padding: 2%;
     margin-bottom: 20px;
 }
+
 header #navbar #nav-content{
     display: flex;
     align-items: center;

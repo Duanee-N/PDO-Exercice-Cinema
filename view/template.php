@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet"/>
         <link href="public/css/styleMobile.css" rel="stylesheet"/>
+        <link href="public/css/styleTablette.css" rel="stylesheet"/>
         <title><?= $titre ?></title>
     </head>
     <body>

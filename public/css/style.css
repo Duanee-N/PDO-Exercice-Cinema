@@ -78,6 +78,16 @@ header #navbar #socials a:hover{
     color: var(--red);
 }
 
+header #navbar .menu-burger, header #navbar .close{
+    display: none;
+}
+
+header #navbar .menu-burger .fa-bars, header #navbar .fa-xmark{
+    display: none;
+    color: white;
+    font-size: 5vw;
+}
+
 /* ***************MAIN*************** */
 main{
     display: flex;

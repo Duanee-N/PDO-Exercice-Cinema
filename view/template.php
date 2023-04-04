@@ -22,10 +22,16 @@
                     <span id="cineclick"><b>CinéClick</b></span>
                 </div>
                 <ul id="socials">
-                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
                 </ul>
+                <div class="close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="menu-burger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
             </div>
         </header>
         <main class="<?= ($center == 1) ? 'center'  : ''?>">

@@ -11,6 +11,7 @@
     
     /* ***************HEADER*************** */
     header #navbar{
+        padding: 3%;
         margin-bottom: 40px;
     }
 
@@ -22,18 +23,22 @@
         font-size: 5vw;
     }
 
-    header #navbar #socials{
+    header #navbar #socials{ /*             MENU BURGER            */
         display: none;
+    }
+    
+    header #navbar .menu-burger, header #navbar .close{
+        display: block;
+    }
+
+    header #navbar .menu-burger .fa-bars, header #navbar .fa-xmark{
+        cursor: pointer;
     }
 
     /* ***************MAIN*************** */
     main.center{
         margin-top: 56%;
         margin-bottom: 56%;
-    }
-
-    main nav{
-        display: none;
     }
 
     main #titre{
@@ -242,4 +247,6 @@
         bottom: 35px;
         right: 5px;
     }
+
+    /* ***************MENU BURGER*************** */
 }

@@ -18,6 +18,8 @@
     $titre_secondaire="<h2 class=titre-details>Genre : ".$genre["libelle_genre"]."</h2>";
     $chiffre=1;
     $center=1;
+    $footer=0;
+    $space=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

@@ -4,26 +4,18 @@
     // $casting=$requete2->fetchAll();
     // var_dump($casting);die;
     $acteur=$requete->fetchAll();
-
-    if(!empty($acteur[0]["portrait"])){
-        $img=1;
-    } else{
-        $img=0;
-    }
 ?>
-<div class="details <?= ($img == 1) ? 'img'  : 'emptyImg' ?> acteurs">
-    <img src='<?= $acteur[0]["portrait"] ?>'width=470>
-    <div id="detailActeurs">
-        <p>Date de naissance : <?= $acteur[0]["date_naissance"] ?></p>
-        <p>Sexe : <?= $acteur[0]["sexe"] ?></p>
-        <p>Rôles : <ul>
-        <?php
-            foreach($acteur as $filmographie){
-        ?>
-            <li>- <a href="index.php?action=detailFilms&id=<?= $filmographie["id_film"] ?>"><p class="red"><?= $filmographie["titre_film"] ?> (<?= $filmographie["annee_sortie_fr"] ?>)</p></a> : <a href='index.php?action=detailRoles&id=<?= $filmographie["id_role"] ?>'><i><?= $filmographie["nom_role"] ?></i></a></li>
-            <?php } ?>
-            </ul></p>
-    </div>
+
+<div class="details acteurs">
+    <p>Date de naissance : <?= $acteur[0]["date_naissance"] ?></p>
+    <p>Sexe : <?= $acteur[0]["sexe"] ?></p>
+    <p>Rôles : <ul>
+    <?php
+        foreach($acteur as $filmographie){
+    ?>
+        <li>- <a href="index.php?action=detailFilms&id=<?= $filmographie["id_film"] ?>"><p class="red"><?= $filmographie["titre_film"] ?> (<?= $filmographie["annee_sortie_fr"] ?>)</p></a> : <a href='index.php?action=detailRoles&id=<?= $filmographie["id_role"] ?>'><i><?= $filmographie["nom_role"] ?></i></a></li>
+        <?php } ?>
+        </ul></p>
 </div>
 
 <?php 

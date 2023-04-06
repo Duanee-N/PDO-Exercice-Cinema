@@ -26,11 +26,18 @@
                     <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
                     <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
                 </ul>
-                <div class="close">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
                 <div class="menu-burger">
-                    <i class="fa-solid fa-bars"></i>
+                    <input id="menu-toggle" type="checkbox"/> <!-- ici, checkbox remplace onclick -->
+                    <label class="menu-btn" for="menu-toggle">
+                    <span></span> <!-- ici, span servira d'icônes pour le menu burger -->
+                    </label>
+                    <ul class="menu-box">
+                        <li><a class="lien" href="index.php?action=listFilms">Films</a></li>
+                        <li><a class="lien" href="index.php?action=listGenres">Genres</a></li>
+                        <li><a class="lien" href="index.php?action=listActeurs">Acteurs</a></li>
+                        <li><a class="lien" href="index.php?action=listRoles">Rôles</a></li>
+                        <li><a class="lien" href="index.php?action=listRealisateurs">Réalisateurs</a></li>
+                    </ul>
                 </div>
             </div>
         </header>
@@ -52,7 +59,7 @@
                 <?= $contenu ?>
             </div>
         </main>
-        <footer class="<?= ($footer == 1) ? 'footer'  : ''?> <?= ($footerSize == 1) ? 'footerSize'  : ''?>">
+        <footer class="<?= ($footer == 1) ? 'footer'  : ''?>">
             <div class="footer-column">
                 <ul>
                     <h3>Aide</h3>

@@ -23,18 +23,6 @@
         font-size: 5vw;
     }
 
-    header #navbar #socials{ /*             MENU BURGER            */
-        display: none;
-    }
-    
-    header #navbar .menu-burger, header #navbar .close{
-        display: block;
-    }
-
-    header #navbar .menu-burger .fa-bars, header #navbar .fa-xmark{
-        cursor: pointer;
-    }
-
     /* ***************MAIN*************** */
     main.center{
         margin-top: 56%;
@@ -249,4 +237,88 @@
     }
 
     /* ***************MENU BURGER*************** */
+    main nav, header #navbar #socials{
+        display: none;
+    }
+
+    header #navbar .menu-burger{
+        display: block;
+    }
+    #menu-toggle {
+        opacity: 0;
+    }
+      
+    #menu-toggle:checked ~ .menu-btn>span{ /* ~ cible les éléments qui suivent sans être immédiatement après mais qui ont le même parent */
+        transform: rotate(45deg);
+    }
+    
+    #menu-toggle:checked ~ .menu-btn>span::before{ /* ::before crée un pseudo-élément qui sera le premier enfant de l'élément ciblé */
+        top: 0;
+        transform: rotate(0);
+    }
+    
+    #menu-toggle:checked ~ .menu-btn>span::after{ /* ::after crée un pseudo-élément qui sera le dernier enfant de l'élément sélectionné */
+        top: 0;
+        transform: rotate(90deg);
+    }
+    
+    #menu-toggle:checked ~ .menu-box{
+        visibility: visible;
+        right: 0;
+    }
+    
+    .menu-btn {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 8vw;
+        height: 8vw;
+        cursor: pointer;
+        z-index: 11;
+    }
+    
+    .menu-btn>span, .menu-btn>span::before, .menu-btn>span::after{
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition-duration: .25s;
+    }
+    
+    .menu-btn>span::before{
+        content: '';
+        top: -8px;
+    }
+    
+    .menu-btn>span::after{
+        content: '';
+        top: 8px;
+    }
+    
+    .menu-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        position: fixed;
+        visibility: hidden;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #d82026e4;
+        transition-duration: .25s;
+        z-index: 10;
+    }
+    
+    .menu-box>li>a{
+        color: white;
+        transition-duration: .25s;
+    }
+    
 }

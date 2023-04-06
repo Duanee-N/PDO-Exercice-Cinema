@@ -78,21 +78,16 @@ header #navbar #socials a:hover{
     color: var(--red);
 }
 
-header #navbar .menu-burger, header #navbar .close{
-    display: none;
-}
-
-header #navbar .menu-burger .fa-bars, header #navbar .fa-xmark{
-    display: none;
-    color: white;
-    font-size: 5vw;
-}
-
 /* ***************MAIN*************** */
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+main.center{
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 main nav{
@@ -258,7 +253,10 @@ main .contenu .details a:hover{
 
 main .contenu .details.img{
     display: flex;
+    align-items: center;
+    gap: 20px;
     color: white;
+    padding: 1vw;
 }
 
 main .contenu .details.emptyImg{
@@ -274,20 +272,34 @@ main .contenu .details.emptyImg img{
     display: none;
 }
 
-main .contenu .details img{
-    padding: 1vw;
-}
 /* ***************CONTENU DETAILS FILMS*************** */
-main .contenu .details #detailFilms, main .contenu .details #detailActeurs{
+main .contenu .details #detailFilms{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
     text-align: justify;
+    padding: 1vw 1vw 1.5vw 0;
 }
 
 main .contenu .details #detailFilms p>a{
+    color: var(--red);
+}
+
+main .contenu .details #detailFilms p.like{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2.5vw 0 2.5vw;
+    font-size: 2vw;
+}
+
+main .contenu .details #detailFilms p.like>a{
+    color: white;
+}
+
+main .contenu .details #detailFilms p.like>a:hover{
     color: var(--red);
 }
 
@@ -296,7 +308,6 @@ main .contenu .details.genres{
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     gap: 25px;
     padding: 3vw 0 0 1vw;
     width: 100%;
@@ -319,7 +330,6 @@ main .contenu .details.roles{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: center;
     gap: 25px;
     padding: 1.5vw 0 0 1vw;
     width: 100%;
@@ -503,4 +513,9 @@ footer .footer-column a:hover{
     width: 3.5%;
     border-radius: 100%;
     cursor: pointer;
+}
+
+/* ***************MENU BURGER*************** */
+header #navbar .menu-burger{
+    display: none;
 }

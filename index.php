@@ -23,6 +23,14 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "detailFilms" :
             $ctrlCinema->detailFilms($id);
             break;
+
+        case "detailLike" :
+            $ctrlCinema->detailLike($id);
+            break;
+
+        case "detailDislike" :
+            $ctrlCinema->detailDislike($id);
+            break;
             
         case "formFilms" :
             $ctrlCinema->addFilm();

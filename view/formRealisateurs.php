@@ -61,6 +61,8 @@
     $titre_secondaire="Ajouter un réalisateur/une réalisatrice";
     $chiffre=4;
     $space=1;
+    $center=0;
+    $footer=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

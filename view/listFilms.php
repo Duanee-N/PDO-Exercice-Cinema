@@ -31,7 +31,10 @@
 <?php 
     $titre="Liste des films";
     $titre_secondaire="Liste des films";
+    $center=0;
     $chiffre=0;
+    $footer=0;
+    $space=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

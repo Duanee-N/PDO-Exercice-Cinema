@@ -21,6 +21,7 @@
     $chiffre=3;
     $center=1;
     $footer=1;
+    $space=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

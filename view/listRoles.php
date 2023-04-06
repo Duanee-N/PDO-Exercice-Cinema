@@ -30,6 +30,9 @@
     $titre="Liste des rôles";
     $titre_secondaire="Liste des rôles";
     $chiffre=3;
+    $center=0;
+    $footer=0;
+    $space=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

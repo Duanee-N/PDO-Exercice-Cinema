@@ -56,6 +56,8 @@
     $titre_secondaire="Ajouter un rôle";
     $chiffre=3;
     $space=1;
+    $center=0;
+    $footer=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

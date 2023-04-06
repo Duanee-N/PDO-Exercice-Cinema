@@ -29,6 +29,9 @@
     $titre="Liste des genres";
     $titre_secondaire="Liste des genres";
     $chiffre=1;
+    $center=1;
+    $footer=0;
+    $space=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

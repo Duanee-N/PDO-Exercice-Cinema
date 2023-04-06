@@ -31,6 +31,9 @@
     $titre="Liste des réalisateurs/réalisatrices";
     $titre_secondaire="Liste des réalisateurs/réalisatrices";
     $chiffre=4;
+    $center=0;
+    $footer=0;
+    $space=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

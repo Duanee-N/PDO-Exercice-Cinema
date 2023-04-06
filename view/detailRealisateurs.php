@@ -1,12 +1,6 @@
 <?php 
     ob_start();
     $realisateur=$requete->fetchAll();
-
-    if(!empty($film["affiche"])){
-        $img=1;
-    } else{
-        $img=0;
-    }
 ?>
 <div class="details realisateurs">
         <p>Date de naissance : <?= $realisateur[0]["date_naissance"] ?></p>

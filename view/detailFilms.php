@@ -17,8 +17,8 @@
         <p>Durée : <?= $film["duree"] ?></p>
         <p>Année de sortie : <?= $film["annee_sortie_fr"] ?></p>
         <p>Note :
-
-        <?php 
+            
+            <?php 
             if($film["note"]!=0){
                 for($i=0;$i<$film["note"];$i++){
                     echo "<i class='fa-solid fa-star fullStars'></i>";
@@ -29,9 +29,10 @@
             }else{
                 echo "Indisponible";
             }
-        ?>
+            ?>
+            
         </p>
-
+        <p>Likes : <?= $film["likes"] ?></p>
         <p>Synopsis : <?= $film["synopsis"] ?></p>
         <p>Casting : <br><ul>
             
@@ -41,6 +42,10 @@
             <li>- <a href='index.php?action=detailActeurs&id=<?= $casting["id_acteur"] ?>'><p class="red"><?= $casting["prenom"] ?> <?=$casting["nom"]?></p></a> : <a href='index.php?action=detailRoles&id=<?= $casting["id_role"] ?>' class='lien'><i><?= $casting["nom_role"] ?></i></a></li>
         <?php } ?>
             </ul></p>
+        <p class=like>
+            <a href='index.php?action=detailLike&id=<?= $film["id_film"] ?>'><i class="fa-regular fa-thumbs-up"></i></a>
+            <a href='index.php?action=detailDislike&id=<?= $film["id_film"] ?>'><i class="fa-regular fa-thumbs-down"></i></a>
+        </p>
     </div>
 </div>
     
@@ -49,6 +54,8 @@
     $titre_secondaire="<h2 class=titre-details>Film : ".$film["titre_film"]."</h2>";
     $chiffre=0;
     $space=1;
+    $center=0;
+    $footer=0;
     $contenu=ob_get_clean();
     require "view/template.php";
 ?>

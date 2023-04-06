@@ -144,6 +144,10 @@
         gap: 10px;
     }
 
+    main .contenu .details #detailFilms p.like{
+        font-size: 8vw;
+    }
+
     /* ***************CONTENU DETAILS GENRES*************** */
     main .contenu.genre{
         display: flex;
